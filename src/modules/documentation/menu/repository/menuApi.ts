@@ -24,7 +24,7 @@ export const useMenuApi = create<menuApi>((set, get) => ({
     search_result: undefined as Array<menu> | undefined,
 
     async get(payload: any = null) {
-        await restApi.$get('edfal/documentations/menus', { params: payload }).then(res => {
+        await restApi.$get('edfal/documentations/menus', payload).then(res => {
             set({
                 data: res.data,
                 meta: res.meta,
@@ -38,7 +38,7 @@ export const useMenuApi = create<menuApi>((set, get) => ({
         });
     },
     async search(payload: any = null) {
-        await restApi.$get('edfal/documentations/menus', { params: payload }).then(res => {
+        await restApi.$get('edfal/documentations/menus', payload).then(res => {
             set({
                 search_result: res.data
             })
@@ -49,7 +49,7 @@ export const useMenuApi = create<menuApi>((set, get) => ({
         });
     },
     async getActiveMenu(payload: any = null) {
-        await restApi.$get('edfal/documentations/menus', { params: payload }).then(res => {
+        await restApi.$get('edfal/documentations/menus', payload).then(res => {
             set({
                 active_menu: res.data[0]
             })

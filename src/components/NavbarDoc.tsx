@@ -5,7 +5,6 @@ import { useSession, signIn, signOut } from "next-auth/react"
 import restApi from '@/repository/restApi';
 import { useMenuApi } from '@/modules/documentation/menu/repository/menuApi';
 import MenuEditor from '@/modules/documentation/menu/MenuEditor';
-import MenuFinder from '@/modules/documentation/menu/MenuFinder';
 
 export default function Navbar() {
   const [stateMenu, setMenu] = useState(false);
@@ -23,7 +22,6 @@ export default function Navbar() {
   return (
     <>
       <MenuEditor parent_id={0} />
-      <MenuFinder />
       <nav className="navbar navbar-expand-lg navbar-light p-2">
         <div className="container">
           {String(stateMenu)}
