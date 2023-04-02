@@ -19,9 +19,11 @@ export const useAppVersionApi = create<appVersionApi>((set, get) => ({
 
     async get(payload: any = null) {
         await restApi.$get('edfal/documentations/app-versions', payload ).then(res => {
-            this.data = res.data
-            this.meta = res.meta
-            this.link = res.link
+            set({
+                data: res.data,
+                meta: res.meta,
+                link: res.link,
+            })
         }).catch((error) => {
             if (error.status == 404) {
 
@@ -30,9 +32,12 @@ export const useAppVersionApi = create<appVersionApi>((set, get) => ({
     },
     async del(id: any) {
         await restApi.$delete('edfal/documentations/app-versions/' + id).then(res => {
-            if (this.data != undefined) {
-                var index = this.data.findIndex((data) => data.id == id)
-                this.data.splice(index, 1)
+            if (get().data) {
+                var index = get().data?.findIndex((data) => data.id == id)
+                if (index)
+                    set({
+                        data: get().data?.splice(index, 1)
+                    })
             }
         });
     },
