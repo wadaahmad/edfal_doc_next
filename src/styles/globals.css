@@ -153,7 +153,7 @@ body {
   text-align: center;
 }
 
-.nav-dock .nuxt-link-exact-active {
+.nav-dock .active {
   background-color: #71007f !important;
   border: #71007f;
   color: #fff;
@@ -214,6 +214,7 @@ body {
 }
 
 #sidebar a {
+  text-decoration: none;
   border: none;
   background-color: rgba(0, 0, 0, .0);
   width: 100%;
@@ -245,7 +246,7 @@ body {
   justify-content: center;
 }
 
-#sidebar .nuxt-link-exact-active {
+#sidebar .active {
   background-color: #71007f;
   padding: 5px;
   color: #fff;

@@ -17,6 +17,7 @@ import { reactive } from "@/repository/reactivity"
 import { icon } from "@fortawesome/fontawesome-svg-core"
 import { usePopup } from "@/bVue/Popup"
 import { useStringRepo } from "@/repository/stringRepo"
+import { classNames } from "@/helper/styleHelper"
 
 export default function MenuView() {
 
@@ -90,15 +91,7 @@ export default function MenuView() {
                     </button>
                 </div>
             }
-
-            <Link href="/" className="
-                  my-3
-                  text-mini
-                  list-group-item-action
-                  flex-column
-                  align-items-start
-                  px-1
-                ">
+            <Link href="/" className={classNames({ "my-3 text-mini list-group-item-action flex-column align-items-start px-1": true, 'active': router.pathname == '/' })}>
                 <div className="d-flex w-100 justify-content-start align-items-center">
 
                     <span className="menu-collapsed">
@@ -112,7 +105,7 @@ export default function MenuView() {
             </Link>
             {menus?.map((menu) => (
                 <>
-                    <Link href={'/menus/' + menu.id + '-' + charUrlFriendly(menu.name)} className="my-3 text-mini list-group-item-action flex-column align-items-start px-1">
+                    <Link href={'/menus/' + menu.id + '-' + charUrlFriendly(menu.name)} className={classNames({ "my-3 text-mini list-group-item-action flex-column align-items-start px-1": true, 'active': router.asPath == '/menus/' + menu.id + '-' + charUrlFriendly(menu.name) })} >
                         <div className="d-flex w-100 justify-content-start align-items-center" onClick={() => setRdata({ activeMenu: menu })}>
 
                             <span className="menu-collapsed">
@@ -133,13 +126,17 @@ export default function MenuView() {
                     </Link >
                     {isActiveSubMenu(menu.id) &&
                         menu.sub_menu?.map((sub) => (
-                            <Link href={'/menus/' + menu.id + '-' + charUrlFriendly(menu.name)} className="my-2 text-mini list-group-item-action flex-column align-items-start px-1">
+                            <Link href={'/menus/' + sub.id + '-' + charUrlFriendly(sub.name)} className={classNames({ "my-2 text-mini list-group-item-action flex-column align-items-start px-1": true, 'active': router.asPath == '/menus/' + sub.id + '-' + charUrlFriendly(sub.name) })}>
                                 <div className="d-flex w-100 justify-content-start align-items-center ml-2" onClick={() => setRdata({ activeMenu: sub })}>
 
                                     <span className="menu-collapsed">{sub.name}
-                                        <FontAwesomeIcon icon={faPencil} onClick={() => editMenu(sub)} className="icon mr-0" />
-                                        <FontAwesomeIcon icon={faTrashCan} onClick={() => dellMenu(sub.id)}
-                                            className="icon mr-0" />
+                                        {session &&
+                                            <>
+                                                <FontAwesomeIcon icon={faPencil} onClick={() => editMenu(sub)} className="icon mr-0" />
+                                                <FontAwesomeIcon icon={faTrashCan} onClick={() => dellMenu(sub.id)}
+                                                    className="icon mr-0" />
+                                            </>
+                                        }
                                     </span>
                                     <span className="submenu-icon ml-auto"></span>
                                 </div>

@@ -1,13 +1,8 @@
 import Link from 'next/link'
 import { useRef, useState } from 'react'
-import { classNames } from '@/helper/styleHelper'
-import { useSession, signIn, signOut } from "next-auth/react"
-import restApi from '@/repository/restApi';
+import { useSession, signOut } from "next-auth/react"
 import { useMenuApi } from '@/modules/documentation/menu/repository/menuApi';
-import MenuEditor from '@/modules/documentation/menu/MenuEditor';
-import MenuFinder from '@/modules/documentation/menu/MenuFinder';
 import { usePopup } from '@/bVue/Popup';
-import BModal from '@/bVue/BModal';
 
 export default function Navbar() {
   const [stateMenu, setMenu] = useState(false);
@@ -15,9 +10,6 @@ export default function Navbar() {
   const menuApi = useMenuApi()
   const hideMenu = async () => {
     setMenu(false);
-    menuApi.get()
-    console.log(menuApi.data)
-    usePopup().msgBoxOk("This msg box").show()
   }
   const sMenu = () => {
     setMenu(true);
@@ -33,7 +25,13 @@ export default function Navbar() {
         <a href="/" aria-current="page" target="_self" className="navbar-brand navbar-doc nuxt-link-exact-active nuxt-link-active" style={{ width: '15.5rem' }}>
           Zchool-DOC
         </a>
-        <ul className="navbar-nav"></ul>
+
+        <ul className="navbar-nav ms-auto">
+          {session &&
+            <span className="btn btn-main glow-on-hover " onClick={() => signOut()}> {session.user?.name}
+            </span>
+          }
+        </ul>
       </nav>
     </>
   )
