@@ -4,7 +4,6 @@ import { useAppVersionApi } from './repository/appVersionApi';
 export default function AppVersion() {
     const appVersionApi = useAppVersionApi()
     const { dateUs } = useStringRepo()
-    appVersionApi.get({ app_name: 'smartschool_web' })
     useEffect(() => {
         appVersionApi.get({ app_name: 'smartschool_web' })
     }, [])
