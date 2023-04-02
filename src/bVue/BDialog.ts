@@ -2,6 +2,7 @@ import { useRef } from "react";
 var $bootstrap: any
 if (typeof window !== 'undefined')
     $bootstrap = require('bootstrap')
+    
 interface option {
     hide_header: boolean,
     hide_footer: boolean,
@@ -46,22 +47,20 @@ export async function BDialog(content: string = '', title: string = 'Confirmatio
     modalDialog.appendChild(modalContent)
     modalElement.appendChild(modalDialog)
 
-    const modal = useRef()
-    await $bootstrap?.then(({ Modal }: any) => {
-        modal.current = new Modal(modalElement, { backdrop: option?.prevent_close ? 'static' : true })
-    })
+    var modal:any = new $bootstrap.Modal(modalElement, { backdrop: option?.prevent_close ? 'static' : true })
+
     modalElement.addEventListener('hidden.bs.modal', () => {
         modalElement.remove()
     })
 
     function show() {
-        modal.current?.show()
+        modal?.show()
         // console.log(modal.value)
 
     }
 
     function hide() {
-        modal.current?._hideModal()
+        modal?._hideModal()
         // modal.value.hide()
         // console.log(modal.value.getInstance())
         // modal.value.hide()

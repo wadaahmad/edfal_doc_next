@@ -21,7 +21,6 @@ export default function Navbar() {
   }
   return (
     <>
-      <MenuEditor parent_id={0} />
       <nav className="navbar navbar-expand-lg navbar-light p-2">
         <div className="container">
           {String(stateMenu)}

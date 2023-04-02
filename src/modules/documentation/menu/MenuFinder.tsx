@@ -6,8 +6,8 @@ export default function MenuFinder() {
     const [filterText, setFilterText] = useState('')
     const menuApi = useMenuApi()
     const router = useRouter()
-    async function search() {
-        await menuApi.search({ name: filterText })
+    function search() {
+        menuApi.search({ name: filterText })
     }
     const searchResults = useMemo(() => menuApi.search_result, [menuApi])
     const isFound = useMemo(() => {

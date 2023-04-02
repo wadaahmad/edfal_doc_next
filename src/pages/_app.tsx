@@ -1,4 +1,5 @@
 import "@/styles/bootstrap.scss"
+import "@/styles/globals.css"
 if (typeof window !== 'undefined') {
   require("bootstrap")
 }
@@ -7,6 +8,7 @@ import type { NextPage } from 'next'
 import type { AppProps } from 'next/app'
 import { SessionProvider } from "next-auth/react"
 import Navbar from "@/components/Navbar"
+import LayoutDefault from "@/layouts/default"
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: ReactElement) => ReactNode
@@ -21,7 +23,7 @@ export default function MyApp({ Component, pageProps: { session, ...pageProps } 
   const getLayout = Component.getLayout ?? ((page) => {
     return (
       <SessionProvider session={session}>
-        <Navbar />{page}
+        <LayoutDefault>{page}</LayoutDefault>
       </SessionProvider>)
   })
 
