@@ -4,9 +4,10 @@ import { useAppVersionApi } from './repository/appVersionApi';
 export default function AppVersion() {
     const appVersionApi = useAppVersionApi()
     const { dateUs } = useStringRepo()
+    appVersionApi.get({ app_name: 'smartschool_web' })
     useEffect(() => {
         appVersionApi.get({ app_name: 'smartschool_web' })
-    })
+    }, [])
     const appVersions = useMemo(() => appVersionApi.data, [appVersionApi])
     return (
         <div>
@@ -25,7 +26,7 @@ export default function AppVersion() {
                         </h2>
                         <div className="mb-2">{dateUs(version.date)}</div>
                         <b>Changelog : </b>
-                        <div v-html="version.changelog"></div>
+                        <div dangerouslySetInnerHTML={{ __html: version.changelog }} ></div>
                     </div>
                 ))
             }
