@@ -1,4 +1,14 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# EDFAL DOCUMENTATION - NEXT.JS
+
+This is Small App to create any documentatation, back-end is separated but it's in private, contact me if you needed [Linkedin](https://www.linkedin.com/in/wada-ahmad/)
+
+
+## Design pattern
+Created with modular pattern, folder structrures :
+1. Modules - all features is created by splitting to a small module, all dependency (state, api, component) is isolated per modul,the benefits are easier to maintenance and scallable. 
+2. Repositoy - For global composable 
+3. bVue -  is custom component to wrap bootstrap 5
+4. components - Global component 
 
 ## Getting Started
 
