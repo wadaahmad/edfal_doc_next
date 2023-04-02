@@ -1,0 +1,17 @@
+{
+  "apps": [
+    {
+      "name": "edfal_doc_next",
+      "instances": 1,
+      "autorestart": true,
+      "watch": true,
+      "max_memory_restart": "1G",
+      "env": {
+        "NODE_ENV": "prod"
+      },
+      "script": "yarn start -p 8010",
+      "port": 8010,
+      "args": "--port 8010"
+    }
+  ]
+}

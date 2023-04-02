@@ -36,10 +36,10 @@ export default function BModal(props: BModal) {
             console.log('show')
         }
             
-        modalElement.current?.addEventListener('hidden.bs.modal', () => {
-            // emit('hidden')
-            // emit('update:modelValue', false)
-        })
+        // modalElement.current?.addEventListener('hidden.bs.modal', () => {
+        //     // emit('hidden')
+        //     // emit('update:modelValue', false)
+        // })
     }, [])
 
 
