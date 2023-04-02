@@ -1,3 +1,4 @@
+import { useStringRepo } from "@/repository/stringRepo"
 import { useRouter } from "next/router"
 import { useMemo, useState } from "react"
 import { useMenuApi } from "./repository/menuApi"
@@ -6,6 +7,7 @@ export default function MenuFinder() {
     const [filterText, setFilterText] = useState('')
     const menuApi = useMenuApi()
     const router = useRouter()
+    const { charUrlFriendly } = useStringRepo();
     function search() {
         menuApi.search({ name: filterText })
     }
@@ -18,7 +20,7 @@ export default function MenuFinder() {
         return false
     }, [searchResults])
     function goMenu(menu: menu) {
-        router.push('/menus/' + menu.id)
+        router.push('/menus/' + menu.id + '-' + charUrlFriendly(menu.name))
         setFilterText('')
     }
     return (

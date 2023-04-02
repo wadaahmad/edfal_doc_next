@@ -10,7 +10,7 @@ interface contentApi {
     del: (payload: any) => void,
     store: (payload: any) => Promise<boolean>,
 }
-export const useMenuApi = create<contentApi>((set, get) => ({
+export const useContentApi = create<contentApi>((set, get) => ({
 
     data: undefined as Array<content> | undefined,
     meta: Array(),

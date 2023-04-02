@@ -1,15 +1,16 @@
-import { useImageRepo } from '~/repository/images/imageRepo'
+
+import { useImageRepo } from '@/repository/images/imageRepo'
 import 'jodit/build/jodit.min.css'
 import { useEffect, useRef } from 'react'
 var jodit: any
 if (typeof window !== 'undefined')
     jodit = require('jodit')
 
-interface JoditEditor{
-    value:string,
-    changed:(val:string)=>void
+interface JoditEditor {
+    value?: string,
+    changed?: (val: string) => void
 }
-export default function JoditEditor(props:JoditEditor){
+export default function JoditEditor(props: JoditEditor) {
     const joditContainer = useRef()
     const content = useRef(props.value)
     // watch(() => props.value, (newValue) => {
@@ -137,4 +138,3 @@ export default function JoditEditor(props:JoditEditor){
 
 
 
-  
