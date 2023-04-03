@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { useRef, useState } from 'react'
 import { useSession, signOut } from "next-auth/react"
 import { useMenuApi } from '@/modules/documentation/menu/repository/menuApi';
-import { usePopup } from '@/bVue/Popup';
+import { usePopup } from '@/bReact/Popup';
 
 export default function Navbar() {
   const [stateMenu, setMenu] = useState(false);

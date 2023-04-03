@@ -7,7 +7,7 @@ This is Small App to create any documentatation, back-end is separated but it's 
 Created with modular pattern, folder structrures :
 1. Modules - all features is created by splitting to a small module, all dependency (state, api, component) is isolated per modul,the benefits are easier to maintenance and scallable. 
 2. Repositoy - For global composable 
-3. bVue -  is custom component to wrap bootstrap 5
+3. bReact -  is custom component to wrap bootstrap 5
 4. components - Global component 
 
 ## Getting Started

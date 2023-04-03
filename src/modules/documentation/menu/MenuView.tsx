@@ -15,7 +15,7 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { reactive } from "@/repository/reactivity"
 import { icon } from "@fortawesome/fontawesome-svg-core"
-import { usePopup } from "@/bVue/Popup"
+import { usePopup } from "@/bReact/Popup"
 import { useStringRepo } from "@/repository/stringRepo"
 import { classNames } from "@/helper/styleHelper"
 
